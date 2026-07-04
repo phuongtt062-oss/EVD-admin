@@ -1,0 +1,49 @@
+{
+  "documents": [
+    {
+      "id": "1",
+      "code": "EVD-001",
+      "title": "Hop dong cho vay ca nhan Q1/2026",
+      "category": "CONTRACT",
+      "status": "ACTIVE",
+      "createdBy": "admin@lotte.com",
+      "createdDate": "2026-01-15T08:30:00.000Z"
+    },
+    {
+      "id": "2",
+      "code": "EVD-002",
+      "title": "Bao cao tai chinh thang 12/2025",
+      "category": "REPORT",
+      "status": "ACTIVE",
+      "createdBy": "admin@lotte.com",
+      "createdDate": "2026-01-10T14:20:00.000Z"
+    },
+    {
+      "id": "3",
+      "code": "EVD-003",
+      "title": "Hoa don dich vu tham dinh",
+      "category": "INVOICE",
+      "status": "DRAFT",
+      "createdBy": "staff@lotte.com",
+      "createdDate": "2026-02-01T09:00:00.000Z"
+    },
+    {
+      "id": "4",
+      "code": "EVD-004",
+      "title": "Quy dinh noi bo ve quan ly tai lieu",
+      "category": "REPORT",
+      "status": "ACTIVE",
+      "createdBy": "admin@lotte.com",
+      "createdDate": "2025-12-20T11:45:00.000Z"
+    },
+    {
+      "id": "5",
+      "code": "EVD-005",
+      "title": "Bien ban hop ban quan tri",
+      "category": "REPORT",
+      "status": "ACTIVE",
+      "createdBy": "staff@lotte.com",
+      "createdDate": "2026-02-28T16:30:00.000Z"
+    }
+  ]
+}

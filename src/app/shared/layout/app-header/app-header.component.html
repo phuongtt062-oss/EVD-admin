@@ -1,0 +1,12 @@
+<header class="app-topbar">
+  <div class="app-topbar__left">
+    <button type="button" class="app-topbar__menu-btn" (click)="onToggleMenu()">Menu</button>
+    <span class="app-topbar__brand">EVD Admin</span>
+  </div>
+
+  <div class="app-topbar__right">
+    <span class="app-topbar__user">{{ user?.username }}</span>
+    <span class="badge" [class]="roleBadgeClass()">{{ user?.role }}</span>
+    <button type="button" class="btn btn--outline btn--sm" (click)="onLogout()">Đăng xuất</button>
+  </div>
+</header>

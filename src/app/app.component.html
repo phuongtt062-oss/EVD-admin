@@ -1,0 +1,25 @@
+<div class="app-root" [class.app-root--shell]="showShell()">
+  @if (showShell()) {
+    <app-app-header
+      [user]="auth.user()"
+      (menuToggle)="toggleSidebar()"
+      (logout)="onLogout()"
+    />
+  }
+
+  <div class="app-shell__layout" [class.app-shell__layout--with-menu]="showShell()">
+    @if (showShell()) {
+      <app-app-menu
+        [items]="menuItems"
+        [isOpen]="sidebarOpen()"
+        (closeRequested)="closeSidebar()"
+      />
+    }
+
+    <main class="app-shell__main">
+      <router-outlet />
+    </main>
+  </div>
+
+  <app-toast />
+</div>

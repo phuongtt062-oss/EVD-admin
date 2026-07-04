@@ -1,0 +1,30 @@
+@if (isOpen()) {
+  <div
+    class="app-modal-overlay"
+    role="dialog"
+    aria-modal="true"
+    [attr.aria-label]="title() || 'Hộp thoại'"
+    (click)="onBackdropClick()"
+    (keydown.escape)="onEscape($event)"
+  >
+    <div
+      class="app-modal-panel"
+      [class.app-modal-panel--sm]="size() === 'sm'"
+      [class.app-modal-panel--md]="size() === 'md'"
+      [class.app-modal-panel--lg]="size() === 'lg'"
+      (click)="$event.stopPropagation()"
+    >
+      @if (title()) {
+        <div class="app-modal__header">
+          <h2 class="app-modal__title">{{ title() }}</h2>
+          @if (canDismiss()) {
+            <button type="button" class="app-modal__close" aria-label="Đóng" (click)="onCloseClick()">×</button>
+          }
+        </div>
+      }
+      <div class="app-modal__body">
+        <ng-content />
+      </div>
+    </div>
+  </div>
+}

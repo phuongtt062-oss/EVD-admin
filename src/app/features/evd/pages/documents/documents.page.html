@@ -1,0 +1,117 @@
+<div class="evd-page">
+  <header class="evd-page__header">
+    <h1 class="evd-page__title">Quản lý tài liệu</h1>
+    <div class="evd-page__header-actions">
+      <button type="button" class="btn" (click)="actions.openCreateForm()">Thêm mới</button>
+      <button type="button" class="btn btn--outline" (click)="importFlow.openImport()">
+        Import CSV / Excel
+      </button>
+    </div>
+  </header>
+
+  <div class="card evd-toolbar-card">
+    <div class="evd-toolbar">
+      <div class="evd-toolbar__filters">
+        <div class="evd-toolbar__field evd-toolbar__field--search">
+          <label class="field-label" for="search">Tìm kiếm (mã / tiêu đề)</label>
+          <input
+            id="search"
+            class="field-input w-full"
+            placeholder="Nhập mã hoặc tiêu đề..."
+            [ngModel]="list.search()"
+            (ngModelChange)="list.search.set($event)"
+            (keyup.enter)="list.searchDocuments()"
+          />
+        </div>
+        <div class="evd-toolbar__field">
+          <label class="field-label" for="status-filter">Trạng thái</label>
+          <select
+            id="status-filter"
+            class="field-native-select w-full"
+            [ngModel]="list.statusFilter()"
+            (ngModelChange)="list.statusFilter.set($event)"
+          >
+            @for (opt of statusOptions; track opt.value) {
+              <option [value]="opt.value">{{ opt.label }}</option>
+            }
+          </select>
+        </div>
+        <div class="evd-toolbar__field">
+          <label class="field-label" for="category-filter">Danh mục</label>
+          <select
+            id="category-filter"
+            class="field-native-select w-full"
+            [ngModel]="list.categoryFilter()"
+            (ngModelChange)="list.categoryFilter.set($event)"
+          >
+            @for (opt of categoryOptions; track opt.value) {
+              <option [value]="opt.value">{{ opt.label }}</option>
+            }
+          </select>
+        </div>
+        <div class="evd-toolbar__actions">
+          <button type="button" class="btn" (click)="list.searchDocuments()">Tìm kiếm</button>
+          <button type="button" class="btn btn--outline" (click)="list.resetFilters()">Xóa lọc</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  @if (auth.isStaff()) {
+    <div class="alert alert--warn evd-staff-msg">
+      Chế độ STAFF: chỉ hiển thị tài liệu của bạn, không có quyền xóa.
+    </div>
+  }
+
+  <div class="card evd-content-card">
+    @if (list.loading()) {
+      <div class="evd-content__loading">
+        <app-spinner />
+        <span>Đang tải dữ liệu...</span>
+      </div>
+    } @else if (list.error()) {
+      <app-error-state [message]="list.error()!" (retry)="list.loadDocuments()" />
+    } @else if (list.isEmpty()) {
+      <app-empty-state
+        title="Không có tài liệu"
+        description="Thử thay đổi bộ lọc hoặc thêm tài liệu mới."
+      />
+    } @else {
+      <app-document-table />
+      <app-pagination
+        [page]="list.page()"
+        [pageSize]="list.pageSize()"
+        [pageSizeOptions]="pageSizeOptions"
+        [total]="list.total()"
+        [totalPages]="list.totalPages()"
+        (pageChange)="list.applyPage($event)"
+        (pageSizeChange)="list.applyPageSize($event)"
+      />
+    }
+  </div>
+</div>
+
+<app-modal [isOpen]="actions.formOpen()" title="Thêm tài liệu mới" (dismissed)="actions.closeForm()">
+  <app-document-form />
+</app-modal>
+
+<app-modal
+  [isOpen]="importFlow.importOpen()"
+  title="Import hàng loạt"
+  size="lg"
+  [canDismiss]="!importFlow.importProcessing()"
+  (dismissed)="importFlow.closeImport()"
+>
+  @if (importFlow.importOpen()) {
+    <app-bulk-import />
+  }
+</app-modal>
+
+<app-modal [isOpen]="!!actions.deleteTarget()" title="Xóa tài liệu" size="sm" (dismissed)="actions.closeDeleteConfirm()">
+  <app-confirm-dialog
+    [message]="deleteMessage()"
+    confirmLabel="Xóa"
+    (confirmed)="onConfirmDelete()"
+    (cancelled)="actions.closeDeleteConfirm()"
+  />
+</app-modal>

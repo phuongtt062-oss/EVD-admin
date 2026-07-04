@@ -1,0 +1,9 @@
+{
+  "fields": ["code", "title", "category", "status"],
+  "categories": ["CONTRACT", "INVOICE", "REPORT"],
+  "statuses": ["DRAFT", "ACTIVE", "ARCHIVED"],
+  "validation": {
+    "code": { "min": 3, "max": 20 },
+    "title": { "min": 3, "max": 200 }
+  }
+}

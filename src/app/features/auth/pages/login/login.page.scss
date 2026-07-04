@@ -1,0 +1,128 @@
+:host {
+  display: flex;
+  min-height: 100vh;
+}
+
+.login-page {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: linear-gradient(160deg, #e6f5ee 0%, #f5f6f8 45%, #ffffff 100%);
+}
+
+.login-card {
+  width: 100%;
+  max-width: 420px;
+}
+
+.login-card__header {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.login-card__header h1 {
+  margin: 0 0 8px;
+  font-size: 1.6rem;
+}
+
+.login-card__subtitle {
+  margin: 0;
+  color: var(--text-secondary);
+}
+
+.login-card__error {
+  margin-bottom: 16px;
+}
+
+.login-form__field {
+  margin-bottom: 16px;
+}
+
+.login-form__password {
+  position: relative;
+}
+
+.login-form__password .field-input {
+  padding-right: 44px;
+}
+
+.login-form__toggle {
+  position: absolute;
+  top: 50%;
+  right: 8px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: none;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transform: translateY(-50%);
+  transition: color 0.2s ease, background 0.2s ease;
+
+  &:hover {
+    color: var(--color-primary);
+    background: color-mix(in srgb, var(--color-primary) 8%, transparent);
+  }
+}
+
+.login-form__toggle-icon {
+  width: 20px;
+  height: 20px;
+}
+
+.login-form__submit {
+  margin-top: 8px;
+}
+
+.login-demo {
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border);
+}
+
+.login-demo__title {
+  margin: 0 0 10px;
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+}
+
+.login-demo__accounts {
+  display: grid;
+  gap: 8px;
+}
+
+.login-demo__item {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: #fafafa;
+  cursor: pointer;
+  text-align: left;
+  font-family: inherit;
+  transition: border-color 0.2s ease;
+
+  &:hover {
+    border-color: var(--color-primary);
+  }
+
+  strong {
+    font-size: 0.85rem;
+    color: var(--color-primary-shade);
+  }
+
+  span {
+    font-size: 0.78rem;
+    color: var(--text-secondary);
+  }
+}

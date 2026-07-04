@@ -1,0 +1,134 @@
+.app-modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px 16px;
+  background: rgb(0 0 0 / 55%);
+  backdrop-filter: blur(2px);
+  animation: appModalFadeIn 0.2s ease;
+}
+
+.app-modal-panel {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 720px;
+  max-height: min(90vh, 860px);
+  border-radius: 16px;
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  animation: appModalFadeIn 0.2s ease;
+
+  &--sm {
+    max-width: 420px;
+  }
+
+  &--md {
+    max-width: 720px;
+  }
+
+  &--lg {
+    max-width: 920px;
+  }
+}
+
+.app-modal__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-shrink: 0;
+  padding: 18px 20px;
+  border-bottom: 1px solid var(--border, #eaeaea);
+  background: var(--card-bg, #ffffff);
+}
+
+.app-modal__title {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 700;
+  line-height: 1.35;
+  letter-spacing: -0.02em;
+  color: var(--text-primary, #1d1d1d);
+}
+
+.app-modal__close {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  margin: 0;
+  padding: 0;
+  border: none;
+  border-radius: 10px;
+  background: transparent;
+  color: var(--text-secondary, #666666);
+  font-size: 1.5rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease;
+
+  &:hover,
+  &:focus-visible {
+    background: #f0f2f5;
+    color: var(--text-primary, #1d1d1d);
+    outline: none;
+  }
+}
+
+.app-modal__body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+  align-items: stretch;
+  box-sizing: border-box;
+  width: 100%;
+  padding: 20px 24px 24px;
+  overflow-y: auto;
+  text-align: left;
+  background: var(--card-bg, #ffffff);
+}
+
+@keyframes appModalFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@media (max-width: 640px) {
+  .app-modal-overlay {
+    align-items: flex-end;
+    padding: 0;
+  }
+
+  .app-modal-panel {
+    max-width: 100%;
+    max-height: 92vh;
+    border-radius: 18px 18px 0 0;
+    animation: appModalSlideUp 0.25s ease;
+  }
+
+  .app-modal__body {
+    padding: 16px 16px 20px;
+  }
+}
+
+@keyframes appModalSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

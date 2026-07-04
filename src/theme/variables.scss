@@ -1,0 +1,41 @@
+:root {
+  --text-primary: #1d1d1d;
+  --text-secondary: #555555;
+  --text-hint: #888888;
+
+  --bg: #f8f9fa;
+  --card-bg: #ffffff;
+  --border: #e8e8e8;
+
+  --btn-radius: 50px;
+  --input-radius: 12px;
+  --card-radius: 20px;
+  --submit-radius: 26px;
+  --submit-height: 52px;
+  --card-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+
+  --field-height: 48px;
+  --field-border-width: 1.5px;
+  --field-font-size: 0.88rem;
+  --field-padding-h: 14px;
+
+  --color-primary: #00994f;
+  --color-primary-rgb: 0, 153, 79;
+  --color-primary-shade: #007a3f;
+
+  --color-success: #00994f;
+  --color-success-rgb: 0, 153, 79;
+  --color-success-shade: #007a3f;
+
+  --color-warning: #f5a623;
+  --color-warning-rgb: 245, 166, 35;
+  --color-warning-shade: #d8921f;
+
+  --color-danger: #e82629;
+  --color-danger-rgb: 232, 38, 41;
+  --color-danger-shade: #cc1f22;
+
+  --color-medium: #555555;
+  --color-medium-rgb: 85, 85, 85;
+  --color-medium-shade: #474747;
+}

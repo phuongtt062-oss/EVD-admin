@@ -1,0 +1,38 @@
+:host {
+  display: block;
+  height: 100%;
+}
+
+.app-root--shell {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  background: var(--bg, #f8f9fa);
+}
+
+.app-shell__layout {
+  flex: 1;
+  min-height: 0;
+}
+
+.app-shell__layout--with-menu {
+  display: flex;
+}
+
+.app-shell__main {
+  flex: 1;
+  min-width: 0;
+  overflow: auto;
+  padding: 1.5rem;
+}
+
+.app-root:not(.app-root--shell) .app-shell__main {
+  min-height: 100%;
+  padding: 0;
+}
+
+@media (max-width: 1100px) {
+  .app-shell__main {
+    padding: 1rem;
+  }
+}
